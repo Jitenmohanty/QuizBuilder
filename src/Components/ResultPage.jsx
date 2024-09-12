@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import Layout from '../Layout';
 
 const ResultPage = ({ correctCount, totalQuestions }) => {
-  const score = 8;  // Example score
 
   return (
     <Layout>
