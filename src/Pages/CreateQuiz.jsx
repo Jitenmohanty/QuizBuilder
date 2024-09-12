@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import Layout from '../Layout';
-const CreateQuiz = () => {
+const CreateQuiz = ({setQuizes}) => {
   const [questions, setQuestions] = useState([{ questionText: '', options: ['', '', '', ''], correctAnswer: '' }]);
+
+  const [quiz,setQuiz] = useState({
+    title:"",
+    description:""
+  })
 
   const handleAddQuestion = () => {
     setQuestions([...questions, { questionText: '', options: ['', '', '', ''], correctAnswer: '' }]);
@@ -21,6 +26,9 @@ const CreateQuiz = () => {
         <div>
           <label className="block text-sm font-medium text-gray-700">Quiz Title</label>
           <input
+          name='title'
+          value={quiz.title}
+          onChange={(e) => setQuiz({ ...quiz, [e.target.name]: e.target.value })}
             type="text"
             className="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
             placeholder="Enter quiz title"
@@ -30,6 +38,9 @@ const CreateQuiz = () => {
         <div>
           <label className="block text-sm font-medium text-gray-700">Quiz Description</label>
           <textarea
+            name='description'
+            value={quiz.description}
+          onChange={(e) => setQuiz({ ...quiz, [e.target.name]: e.target.value })}
             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
             placeholder="Enter quiz description"
           />
@@ -72,6 +83,10 @@ const CreateQuiz = () => {
         </div>
 
         <button
+          onClick={(e)=>{
+            e.preventDefault();
+            setQuizes(quiz)}
+          }
           type="submit"
           className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
         >

@@ -1,12 +1,8 @@
 import { Link } from 'react-router-dom';
 import Layout from '../Layout';
 
-const Home = () => {
-  const quizzes = [
-    { id: 1, title: 'React Basics', description: 'Test your React knowledge' },
-    { id: 2, title: 'JavaScript Fundamentals', description: 'Check your JS basics' },
-    // Add more quizzes as needed
-  ];
+const Home = ({quizzes}) => {
+  
 
   return (
     <Layout>
