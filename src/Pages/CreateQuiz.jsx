@@ -1,31 +1,40 @@
 import { useState } from "react";
 import Layout from "../Layout";
+import { useNavigate } from "react-router-dom";
 const CreateQuiz = ({ setQuizes }) => {
-  const [questions, setQuestions] = useState([
-    { questionText: "", options: ["", "", "", ""], correctAnswer: "" },
-  ]);
+  // const [questions, setQuestions] = useState([
+  //   { questionText: "", options: ["", "", "", ""], correctAnswer: "" },
+  // ]);
 
   const [quiz, setQuiz] = useState({
     title: "",
     description: "",
   });
 
-  const handleAddQuestion = () => {
-    setQuestions([
-      ...questions,
-      { questionText: "", options: ["", "", "", ""], correctAnswer: "" },
-    ]);
-  };
+  const navigate = useNavigate();
 
-  const handleQuestionChange = (index, field, value) => {
-    const newQuestions = [...questions];
-    newQuestions[index][field] = value;
-    setQuestions(newQuestions);
-  };
+  // const handleAddQuestion = () => {
+  //   setQuestions([
+  //     ...questions,
+  //     { questionText: "", options: ["", "", "", ""], correctAnswer: "" },
+  //   ]);
+  // };
+
+  // const handleQuestionChange = (index, field, value) => {
+  //   const newQuestions = [...questions];
+  //   newQuestions[index][field] = value;
+  //   setQuestions(newQuestions);
+  // };
 
   const handleQuizCreation = (e) => {
             e.preventDefault();
             setQuizes(quiz);
+            setQuiz((prev)=>({
+              ...prev,
+              title:"",
+              description:""
+            }))
+            navigate("/")
           }
 
   return (
@@ -65,8 +74,8 @@ const CreateQuiz = ({ setQuizes }) => {
             placeholder="Enter quiz description"
           />
         </div>
-
-        <div>
+            {/* This functionality was not properly ready but we definetly do it better  */}
+        {/* <div>
           <h3 className="text-lg font-medium text-gray-900">Questions</h3>
           {questions.map((question, index) => (
             <div
@@ -109,7 +118,7 @@ const CreateQuiz = ({ setQuizes }) => {
           >
             Add Question
           </button>
-        </div>
+        </div> */}
 
         <button
           onClick={handleQuizCreation}

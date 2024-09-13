@@ -7,7 +7,7 @@ import {js} from '../Quizes'
 
 const TakeQuiz = () => {
   const { id } = useParams();
-  const [quiz,setQuiz] = useState(id == 1 ?react:js);
+  const [quiz,setQuiz] = useState(id == 1 ?react:js);//We will do defenetly better in future...
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [isQuizFinished, setIsQuizFinished] = useState(false);
@@ -96,7 +96,7 @@ const TakeQuiz = () => {
                     name={`question-${currentQuestionIndex}`}
                     className="mr-2"
                     checked={answers[currentQuestionIndex] === option}
-                    onClick={() => handleAnswer(option)}
+                    onChange={() => handleAnswer(option)}
                   />
                   {option}
                 </label>
