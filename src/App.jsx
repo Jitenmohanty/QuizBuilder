@@ -15,7 +15,6 @@ const App = () => {
 
   const handleAddNewQuiz = (quiz)=>{
     setQuizes(prev => [...prev,{id:quizzes.length+1,...quiz}])
-    console.log(quizzes)
   }
 
   return (
